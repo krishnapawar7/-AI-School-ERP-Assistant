@@ -155,6 +155,4 @@ def dashboard():
     }
 
 
-@app.api_route("/", methods=["GET", "HEAD"], response_class=HTMLResponse)
-async def root() -> str:
-    return (Path(__file__).resolve().parent / "frontend" / "index.html").read_text(encoding="utf-8")
+

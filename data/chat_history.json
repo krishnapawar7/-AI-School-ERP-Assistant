@@ -1245,5 +1245,16 @@
         "response_hint": "Attendance summary for 2026-07 is ready."
       }
     }
+  },
+  {
+    "id": "21cb0d93-3b8f-4101-b785-d0912e099eaa",
+    "timestamp": "2026-07-01T09:49:07.907861",
+    "query": "What is the attendance for STU001 this month?",
+    "student_id": "STU001",
+    "intent": "attendance",
+    "tools": [
+      "attendance"
+    ],
+    "response": {}
   }
 ]

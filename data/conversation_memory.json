@@ -80,5 +80,15 @@
       "role": "assistant",
       "content": "{'attendance': {'student_id': 'STU001', 'month': '2026-07', 'query_type': 'summary', 'attended': 19, 'total': 20, 'missed': 1, 'attendance_percentage': 95.0, 'status': 'Excellent', 'history': [{'month': '2026-04', 'attendance_percentage': 95.0, 'attended': 19, 'total': 20, 'missed': 1}, {'month': '2026-05', 'attendance_percentage': 90.0, 'attended': 18, 'total': 20, 'missed': 2}, {'month': '2026-06', 'attendance_percentage': 85.0, 'attended': 17, 'total': 20, 'missed': 3}, {'month': '2026-07', 'attendance_percentage': 95.0, 'attended': 19, 'total': 20, 'missed': 1}], 'response_hint': 'Attendance summary for 2026-07 is ready.'}}"
     }
+  ],
+  "test-session": [
+    {
+      "role": "user",
+      "content": "What is the attendance for STU001 this month?"
+    },
+    {
+      "role": "assistant",
+      "content": "{}"
+    }
   ]
 }
