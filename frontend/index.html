@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI School ERP Assistant</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="app-header">
+      <div>
+        <h1>AI School ERP Assistant</h1>
+        <p>Ask about attendance, marks, fees, homework, or timetable.</p>
+      </div>
+      <div class="status-bar">
+        <span id="health-status" class="badge">Loading...</span>
+      </div>
+    </header>
+
+    <section class="panel">
+      <label for="session-id">Session ID</label>
+      <input id="session-id" type="text" value="default" placeholder="session id" />
+
+      <label for="student-id">Student ID</label>
+      <input id="student-id" type="text" placeholder="e.g. STU001" />
+
+      <label for="query">Question</label>
+      <textarea id="query" rows="4" placeholder="Ask about attendance, marks, fees, homework, or timetable..."></textarea>
+
+      <div class="inline-controls">
+        <label><input id="use-gemini" type="checkbox" /> Enrich with Gemini</label>
+        <button id="send-btn">Send</button>
+      </div>
+    </section>
+
+    <section class="output-panel">
+      <h2>Response</h2>
+      <pre id="output">Submit a query to see the ERP assistant response.</pre>
+    </section>
+
+    <section class="output-panel" id="history-panel">
+      <h2>Recent History</h2>
+      <div id="history">Loading recent history...</div>
+    </section>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

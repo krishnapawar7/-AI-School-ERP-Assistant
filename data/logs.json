@@ -1,179 +1,8 @@
 [
   {
-    "id": "51c6fe74-2ee1-490e-ae52-c5619c449f4c",
-    "timestamp": "2026-07-01T06:00:34.448730",
-    "query": "Show my attendance",
-    "student_id": "   ",
-    "intent": "Attendance",
-    "tools": [
-      "attendance"
-    ],
-    "response": {
-      "error": "Invalid student ID"
-    }
-  },
-  {
-    "id": "9225524a-73eb-49b3-a49b-681cf3ad4de0",
-    "timestamp": "2026-07-01T06:00:34.467126",
+    "timestamp": "2026-07-01T07:49:52.131238+00:00",
+    "session_id": "default",
     "query": "What is my attendance percentage?",
-    "student_id": "stu001",
-    "intent": "Attendance",
-    "tools": [
-      "attendance"
-    ],
-    "response": {
-      "student_id": "STU001",
-      "month": "2026-07",
-      "query_type": "percentage",
-      "attended": 19,
-      "total": 20,
-      "missed": 1,
-      "attendance_percentage": 95.0,
-      "status": "Excellent",
-      "history": [
-        {
-          "month": "2026-04",
-          "attendance_percentage": 95.0,
-          "attended": 19,
-          "total": 20,
-          "missed": 1
-        },
-        {
-          "month": "2026-05",
-          "attendance_percentage": 90.0,
-          "attended": 18,
-          "total": 20,
-          "missed": 2
-        },
-        {
-          "month": "2026-06",
-          "attendance_percentage": 85.0,
-          "attended": 17,
-          "total": 20,
-          "missed": 3
-        },
-        {
-          "month": "2026-07",
-          "attendance_percentage": 95.0,
-          "attended": 19,
-          "total": 20,
-          "missed": 1
-        }
-      ],
-      "response_hint": "Your attendance percentage for 2026-07 is 95.0%."
-    }
-  },
-  {
-    "id": "b20458fe-7f66-49e3-9fe3-decf57cb6edf",
-    "timestamp": "2026-07-01T06:00:34.488819",
-    "query": "Show my attendance",
-    "student_id": "stu001",
-    "intent": "Attendance",
-    "tools": [
-      "attendance"
-    ],
-    "response": {
-      "student_id": "STU001",
-      "month": "2026-07",
-      "query_type": "summary",
-      "attended": 19,
-      "total": 20,
-      "missed": 1,
-      "attendance_percentage": 95.0,
-      "status": "Excellent",
-      "history": [
-        {
-          "month": "2026-04",
-          "attendance_percentage": 95.0,
-          "attended": 19,
-          "total": 20,
-          "missed": 1
-        },
-        {
-          "month": "2026-05",
-          "attendance_percentage": 90.0,
-          "attended": 18,
-          "total": 20,
-          "missed": 2
-        },
-        {
-          "month": "2026-06",
-          "attendance_percentage": 85.0,
-          "attended": 17,
-          "total": 20,
-          "missed": 3
-        },
-        {
-          "month": "2026-07",
-          "attendance_percentage": 95.0,
-          "attended": 19,
-          "total": 20,
-          "missed": 1
-        }
-      ],
-      "response_hint": "Attendance summary for 2026-07 is ready."
-    }
-  },
-  {
-    "id": "44d9f095-45b1-4e11-a531-6a6c1e9f3e83",
-    "timestamp": "2026-07-01T06:17:06.680457",
-    "query": "Show my marks",
-    "student_id": "stu001",
-    "intent": "marks",
-    "tools": [
-      "marks"
-    ],
-    "response": {
-      "student_id": "STU001",
-      "query_type": "summary",
-      "subject_marks": [
-        {
-          "subject": "Mathematics",
-          "exam": "Midterm",
-          "marks": 88,
-          "max_marks": 100,
-          "percentage": 88.0
-        },
-        {
-          "subject": "Science",
-          "exam": "Midterm",
-          "marks": 91,
-          "max_marks": 100,
-          "percentage": 91.0
-        },
-        {
-          "subject": "English",
-          "exam": "Midterm",
-          "marks": 84,
-          "max_marks": 100,
-          "percentage": 84.0
-        },
-        {
-          "subject": "History",
-          "exam": "Midterm",
-          "marks": 78,
-          "max_marks": 100,
-          "percentage": 78.0
-        },
-        {
-          "subject": "Computer Science",
-          "exam": "Final",
-          "marks": 95,
-          "max_marks": 100,
-          "percentage": 95.0
-        }
-      ],
-      "summary": {
-        "total_subjects": 5,
-        "average_marks": 87.2
-      }
-    }
-  },
-  {
-    "id": "eb31f115-315b-4942-b3ba-a6ee1e0e1ee8",
-    "timestamp": "2026-07-01T07:49:52.133043",
-    "query": "What is my attendance percentage?",
-    "student_id": "STU001",
     "intent": "attendance",
     "tools": [
       "attendance",
@@ -228,13 +57,15 @@
         "obtained_marks": 436.0,
         "total_marks": 500.0
       }
-    }
+    },
+    "execution_time_ms": 0.0,
+    "status": "success",
+    "errors": []
   },
   {
-    "id": "47c6eed9-f22f-4a60-a4c8-6e0abb0aa6ac",
-    "timestamp": "2026-07-01T07:49:52.193739",
+    "timestamp": "2026-07-01T07:49:52.192509+00:00",
+    "session_id": "default",
     "query": "Show my attendance",
-    "student_id": "STU001",
     "intent": "attendance",
     "tools": [
       "attendance"
@@ -281,13 +112,15 @@
         ],
         "response_hint": "Attendance summary for 2026-07 is ready."
       }
-    }
+    },
+    "execution_time_ms": 0.0,
+    "status": "success",
+    "errors": []
   },
   {
-    "id": "79452b8a-68db-418d-aa9e-16b14f6ee333",
-    "timestamp": "2026-07-01T07:50:46.633252",
+    "timestamp": "2026-07-01T07:50:46.631726+00:00",
+    "session_id": "default",
     "query": "What is my attendance percentage?",
-    "student_id": "STU001",
     "intent": "attendance",
     "tools": [
       "attendance",
@@ -342,13 +175,15 @@
         "obtained_marks": 436.0,
         "total_marks": 500.0
       }
-    }
+    },
+    "execution_time_ms": 0.0,
+    "status": "success",
+    "errors": []
   },
   {
-    "id": "d0f644ae-91d1-4363-a713-a8ef1015245d",
-    "timestamp": "2026-07-01T07:50:46.697486",
+    "timestamp": "2026-07-01T07:50:46.696094+00:00",
+    "session_id": "default",
     "query": "Show my attendance",
-    "student_id": "STU001",
     "intent": "attendance",
     "tools": [
       "attendance"
@@ -395,13 +230,15 @@
         ],
         "response_hint": "Attendance summary for 2026-07 is ready."
       }
-    }
+    },
+    "execution_time_ms": 0.0,
+    "status": "success",
+    "errors": []
   },
   {
-    "id": "398fec07-ba06-4786-9495-a84abf8da5f6",
-    "timestamp": "2026-07-01T07:51:25.527437",
+    "timestamp": "2026-07-01T07:51:25.525542+00:00",
+    "session_id": "default",
     "query": "What is my attendance percentage?",
-    "student_id": "STU001",
     "intent": "attendance",
     "tools": [
       "attendance"
@@ -448,13 +285,15 @@
         ],
         "response_hint": "Your attendance percentage for 2026-07 is 95.0%."
       }
-    }
+    },
+    "execution_time_ms": 0.0,
+    "status": "success",
+    "errors": []
   },
   {
-    "id": "56d3eddb-f0d6-4f66-b595-cebe38818f82",
-    "timestamp": "2026-07-01T07:51:25.599815",
+    "timestamp": "2026-07-01T07:51:25.598303+00:00",
+    "session_id": "default",
     "query": "Show my attendance",
-    "student_id": "STU001",
     "intent": "attendance",
     "tools": [
       "attendance"
@@ -501,13 +340,15 @@
         ],
         "response_hint": "Attendance summary for 2026-07 is ready."
       }
-    }
+    },
+    "execution_time_ms": 0.0,
+    "status": "success",
+    "errors": []
   },
   {
-    "id": "5918ef21-9b31-40c4-8c93-671ffb65a3e4",
-    "timestamp": "2026-07-01T07:55:12.879269",
+    "timestamp": "2026-07-01T07:55:12.877452+00:00",
+    "session_id": "default",
     "query": "What is my attendance percentage?",
-    "student_id": "STU001",
     "intent": "attendance",
     "tools": [
       "attendance"
@@ -554,13 +395,15 @@
         ],
         "response_hint": "Your attendance percentage for 2026-07 is 95.0%."
       }
-    }
+    },
+    "execution_time_ms": 0.0,
+    "status": "success",
+    "errors": []
   },
   {
-    "id": "213befa6-3af2-46b1-852f-fb2e07b2f1e9",
-    "timestamp": "2026-07-01T07:55:12.940304",
+    "timestamp": "2026-07-01T07:55:12.939176+00:00",
+    "session_id": "default",
     "query": "Show my attendance",
-    "student_id": "STU001",
     "intent": "attendance",
     "tools": [
       "attendance"
@@ -607,13 +450,15 @@
         ],
         "response_hint": "Attendance summary for 2026-07 is ready."
       }
-    }
+    },
+    "execution_time_ms": 0.0,
+    "status": "success",
+    "errors": []
   },
   {
-    "id": "2ada6734-62a7-483e-adcb-1522d0333bed",
-    "timestamp": "2026-07-01T08:16:05.375091",
+    "timestamp": "2026-07-01T08:16:05.372770+00:00",
+    "session_id": "default",
     "query": "What is my attendance percentage?",
-    "student_id": "STU001",
     "intent": "attendance",
     "tools": [
       "attendance"
@@ -660,13 +505,15 @@
         ],
         "response_hint": "Your attendance percentage for 2026-07 is 95.0%."
       }
-    }
+    },
+    "execution_time_ms": 0.0,
+    "status": "success",
+    "errors": []
   },
   {
-    "id": "ced32340-ad52-406a-a3a4-fa633f10a8d4",
-    "timestamp": "2026-07-01T08:16:05.436999",
+    "timestamp": "2026-07-01T08:16:05.435490+00:00",
+    "session_id": "default",
     "query": "Show my attendance",
-    "student_id": "STU001",
     "intent": "attendance",
     "tools": [
       "attendance"
@@ -713,13 +560,15 @@
         ],
         "response_hint": "Attendance summary for 2026-07 is ready."
       }
-    }
+    },
+    "execution_time_ms": 0.0,
+    "status": "success",
+    "errors": []
   },
   {
-    "id": "f02ddd3e-1564-4abc-9aaa-f861af933683",
-    "timestamp": "2026-07-01T08:20:08.732191",
+    "timestamp": "2026-07-01T08:20:08.730174+00:00",
+    "session_id": "default",
     "query": "What is my attendance percentage?",
-    "student_id": "STU001",
     "intent": "attendance",
     "tools": [
       "attendance"
@@ -766,13 +615,15 @@
         ],
         "response_hint": "Your attendance percentage for 2026-07 is 95.0%."
       }
-    }
+    },
+    "execution_time_ms": 0.0,
+    "status": "success",
+    "errors": []
   },
   {
-    "id": "f6e2f60e-f382-4b4d-b174-e5eb43944daa",
-    "timestamp": "2026-07-01T08:20:08.794926",
+    "timestamp": "2026-07-01T08:20:08.793642+00:00",
+    "session_id": "default",
     "query": "Show my attendance",
-    "student_id": "STU001",
     "intent": "attendance",
     "tools": [
       "attendance"
@@ -819,13 +670,15 @@
         ],
         "response_hint": "Attendance summary for 2026-07 is ready."
       }
-    }
+    },
+    "execution_time_ms": 0.0,
+    "status": "success",
+    "errors": []
   },
   {
-    "id": "abde0bea-6a8e-4ce7-99aa-a5cba7cd5352",
-    "timestamp": "2026-07-01T08:20:08.883066",
+    "timestamp": "2026-07-01T08:20:08.881910+00:00",
+    "session_id": "default",
     "query": "Show my attendance",
-    "student_id": "STU001",
     "intent": "attendance",
     "tools": [
       "attendance"
@@ -873,13 +726,15 @@
         "response_hint": "Attendance summary for 2026-07 is ready.",
         "gemini_output": "Gemini enriched output"
       }
-    }
+    },
+    "execution_time_ms": 0.0,
+    "status": "success",
+    "errors": []
   },
   {
-    "id": "d45571cf-0cc3-40ff-9a8a-13cb4bbb8378",
-    "timestamp": "2026-07-01T08:43:45.002694",
+    "timestamp": "2026-07-01T08:43:45.001083+00:00",
+    "session_id": "default",
     "query": "Show my attendance",
-    "student_id": "STU001",
     "intent": "attendance",
     "tools": [
       "attendance"
@@ -926,13 +781,15 @@
         ],
         "response_hint": "Attendance summary for 2026-07 is ready."
       }
-    }
+    },
+    "execution_time_ms": 0.0,
+    "status": "success",
+    "errors": []
   },
   {
-    "id": "fa4ab185-08db-4fdf-a80f-7f7f9b7537a8",
-    "timestamp": "2026-07-01T08:43:48.261539",
+    "timestamp": "2026-07-01T08:43:48.259391+00:00",
+    "session_id": "default",
     "query": "Show my attendance",
-    "student_id": "STU001",
     "intent": "attendance",
     "tools": [
       "attendance"
@@ -979,13 +836,15 @@
         ],
         "response_hint": "Attendance summary for 2026-07 is ready."
       }
-    }
+    },
+    "execution_time_ms": 0.0,
+    "status": "success",
+    "errors": []
   },
   {
-    "id": "fb9db093-b91f-4307-b777-deb62bde7668",
-    "timestamp": "2026-07-01T08:45:07.015939",
+    "timestamp": "2026-07-01T08:45:07.013910+00:00",
+    "session_id": "default",
     "query": "Show my attendance",
-    "student_id": "STU001",
     "intent": "attendance",
     "tools": [
       "attendance"
@@ -1032,13 +891,15 @@
         ],
         "response_hint": "Attendance summary for 2026-07 is ready."
       }
-    }
+    },
+    "execution_time_ms": 0.0,
+    "status": "success",
+    "errors": []
   },
   {
-    "id": "360612da-940c-4aeb-a9f2-ec1427a91d1e",
-    "timestamp": "2026-07-01T08:45:08.704354",
+    "timestamp": "2026-07-01T08:45:08.701871+00:00",
+    "session_id": "default",
     "query": "Show my attendance",
-    "student_id": "STU001",
     "intent": "attendance",
     "tools": [
       "attendance"
@@ -1085,13 +946,15 @@
         ],
         "response_hint": "Attendance summary for 2026-07 is ready."
       }
-    }
+    },
+    "execution_time_ms": 0.0,
+    "status": "success",
+    "errors": []
   },
   {
-    "id": "4eb3eeb0-c051-4ea1-a53c-ea9ef50a66be",
-    "timestamp": "2026-07-01T08:45:15.880047",
+    "timestamp": "2026-07-01T08:45:15.877671+00:00",
+    "session_id": "default",
     "query": "Show my attendance",
-    "student_id": "STU001",
     "intent": "attendance",
     "tools": [
       "attendance"
@@ -1138,13 +1001,15 @@
         ],
         "response_hint": "Attendance summary for 2026-07 is ready."
       }
-    }
+    },
+    "execution_time_ms": 0.0,
+    "status": "success",
+    "errors": []
   },
   {
-    "id": "96be54e6-4018-41c1-b13c-44a8d7954f5a",
-    "timestamp": "2026-07-01T08:47:00.061457",
+    "timestamp": "2026-07-01T08:47:00.060090+00:00",
+    "session_id": "default",
     "query": "Show my attendance",
-    "student_id": "STU001",
     "intent": "attendance",
     "tools": [
       "attendance"
@@ -1191,13 +1056,15 @@
         ],
         "response_hint": "Attendance summary for 2026-07 is ready."
       }
-    }
+    },
+    "execution_time_ms": 0.0,
+    "status": "success",
+    "errors": []
   },
   {
-    "id": "35af3447-09f7-48ca-a75a-71ef02399614",
-    "timestamp": "2026-07-01T08:52:42.675461",
+    "timestamp": "2026-07-01T08:52:42.671893+00:00",
+    "session_id": "default",
     "query": "homework",
-    "student_id": "STU001",
     "intent": "attendance",
     "tools": [
       "attendance"
@@ -1244,6 +1111,9 @@
         ],
         "response_hint": "Attendance summary for 2026-07 is ready."
       }
-    }
+    },
+    "execution_time_ms": 0.0,
+    "status": "success",
+    "errors": []
   }
 ]

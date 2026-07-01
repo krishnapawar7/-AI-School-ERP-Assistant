@@ -1,0 +1,7 @@
+[
+  {"student_id":"STU001","day":"Today","subject":"Mathematics","faculty":"Mr. Sharma","room":"A101","start":"09:00","end":"10:00"},
+  {"student_id":"STU001","day":"Today","subject":"Physics","faculty":"Mrs. Gupta","room":"B201","start":"10:15","end":"11:15"},
+  {"student_id":"STU001","day":"Today","subject":"Computer Science","faculty":"Mr. Verma","room":"Lab-2","start":"11:30","end":"12:30"},
+  {"student_id":"STU001","day":"Tomorrow","subject":"English","faculty":"Mrs. Rao","room":"C101","start":"09:00","end":"10:00"},
+  {"student_id":"STU001","day":"Tomorrow","subject":"Chemistry","faculty":"Mr. Singh","room":"B102","start":"10:15","end":"11:15"}
+]
