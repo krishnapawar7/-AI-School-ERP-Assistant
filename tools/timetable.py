@@ -29,16 +29,16 @@ def get_timetable_response(student_id: Optional[str], query: str) -> Dict[str, A
     if not student_id:
         raise TimetableError("Invalid student ID")
 
-    records = [record for record in _load_data() if str(record.get("student_id", "")).upper() == str(student_id).strip().upper()]
+    records = [
+        record for record in _load_data()
+        if str(record.get("student_id", "")).strip().upper() == str(student_id).strip().upper()
+    ]
     if not records:
         raise TimetableError("Missing timetable data")
 
     q = query.lower()
-    today = [record for record in records if str(record.get("day", "")).lower() == "today"]
-    tomorrow = [record for record in records if str(record.get("day", "")).lower() == "tomorrow"]
+    if "monday" in q or "tuesday" in q or "wednesday" in q or "thursday" in q or "friday" in q or "saturday" in q or "sunday" in q:
+        day = next((word for word in ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"] if word in q), None)
+        return {"student_id": str(student_id).strip().upper(), "day": day.title() if day else None, "timetable": [record for record in records if record.get("day", "").strip().lower() == day]}
 
-    if "tomorrow" in q:
-        return {"student_id": str(student_id).strip().upper(), "tomorrow_timetable": tomorrow}
-    if "next class" in q:
-        return {"student_id": str(student_id).strip().upper(), "next_class": today[0] if today else tomorrow[0] if tomorrow else None}
-    return {"student_id": str(student_id).strip().upper(), "today_timetable": today, "tomorrow_timetable": tomorrow}
+    return {"student_id": str(student_id).strip().upper(), "timetable": records}

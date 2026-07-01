@@ -1,0 +1,34 @@
+[
+  {
+    "student_id": "STU001",
+    "roll_no": "101",
+    "name": "Rahul Sharma",
+    "class": "10",
+    "section": "A",
+    "gender": "Male",
+    "age": 15,
+    "father": "Rajesh Sharma",
+    "mother": "Sunita Sharma",
+    "phone": "9876543210",
+    "email": "rahul@gmail.com",
+    "address": "Indore",
+    "admission_year": 2023,
+    "status": "Active"
+  },
+  {
+    "student_id": "STU002",
+    "roll_no": "102",
+    "name": "Priya Verma",
+    "class": "10",
+    "section": "A",
+    "gender": "Female",
+    "age": 15,
+    "father": "Rakesh Verma",
+    "mother": "Neha Verma",
+    "phone": "9876500000",
+    "email": "priya@gmail.com",
+    "address": "Bhopal",
+    "admission_year": 2023,
+    "status": "Active"
+  }
+]

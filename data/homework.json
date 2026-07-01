@@ -1,7 +1,16 @@
 [
-  {"student_id":"STU001","subject":"Mathematics","title":"Exercise 6.1","day":"Today","due_date":"2026-07-03","completed":false},
-  {"student_id":"STU001","subject":"Physics","title":"Numericals Chapter 3","day":"Tomorrow","due_date":"2026-07-04","completed":false},
-  {"student_id":"STU001","subject":"English","title":"Essay Writing","day":"Today","due_date":"2026-07-03","completed":true},
-  {"student_id":"STU002","subject":"Chemistry","title":"Organic Worksheet","day":"Today","due_date":"2026-07-03","completed":false},
-  {"student_id":"STU003","subject":"Computer Science","title":"Python Functions","day":"Tomorrow","due_date":"2026-07-04","completed":false}
+  {
+    "student_id": "STU001",
+    "subject": "Mathematics",
+    "title": "Exercise 6.2",
+    "due_date": "2026-07-04",
+    "status": "Pending"
+  },
+  {
+    "student_id": "STU001",
+    "subject": "Physics",
+    "title": "Chapter 3 Numericals",
+    "due_date": "2026-07-05",
+    "status": "Completed"
+  }
 ]

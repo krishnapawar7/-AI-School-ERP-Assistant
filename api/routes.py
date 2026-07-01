@@ -9,8 +9,19 @@ from utils.gemini import generate_gemini_text, get_gemini_api_key
 from utils.logger import logger
 from utils.storage import append_history, read_history
 from datetime import datetime
+from pathlib import Path
 import json
 import uuid
+
+DATA_DIR = Path(__file__).resolve().parent.parent / "data"
+
+
+def _load_json_data(filename: str):
+    file_path = DATA_DIR / filename
+    try:
+        return json.loads(file_path.read_text(encoding="utf-8"))
+    except Exception:
+        return None
 
 router = APIRouter()
 
@@ -113,3 +124,32 @@ def get_history(session_id: str):
 @router.get("/logs", response_model=LogsResponse)
 def get_logs():
     return LogsResponse(logs=logger.history())
+
+
+@router.get("/dashboard")
+def dashboard():
+    dashboard_data = _load_json_data("dashboard.json") or {}
+    students = _load_json_data("students.json") or []
+    teachers = _load_json_data("teachers.json") or []
+    staff = _load_json_data("staff.json") or []
+    events = _load_json_data("events.json") or []
+    notifications = _load_json_data("notifications.json") or []
+    finance = _load_json_data("finance.json") or []
+
+    return {
+        "status": "ok",
+        "dashboard": dashboard_data,
+        "totals": {
+            "students": len(students),
+            "teachers": len(teachers),
+            "staffs": len(staff),
+            "events": len(events),
+            "notifications": len(notifications),
+        },
+        "finance": finance,
+        "notifications": notifications,
+        "students": students,
+        "teachers": teachers,
+        "staff": staff,
+        "events": events,
+    }

@@ -29,17 +29,23 @@ def get_homework_response(student_id: Optional[str], query: str) -> Dict[str, An
     if not student_id:
         raise HomeworkError("Invalid student ID")
 
-    records = [record for record in _load_data() if str(record.get("student_id", "")).upper() == str(student_id).strip().upper()]
+    records = [
+        record for record in _load_data()
+        if str(record.get("student_id", "")).strip().upper() == str(student_id).strip().upper()
+    ]
     if not records:
         raise HomeworkError("Missing homework data")
 
-    pending = [record for record in records if not record.get("completed", False)]
-    today_homework = [record for record in records if str(record.get("day", "")).lower() == "today"]
-
-    return {
+    pending = [record for record in records if record.get("status", "").lower() != "completed"]
+    response = {
         "student_id": str(student_id).strip().upper(),
-        "count": len(pending),
-        "today_homework": today_homework,
+        "total_homework": len(records),
+        "pending_count": len(pending),
         "pending_homework": pending,
         "query": query,
     }
+
+    if "pending" in query.lower():
+        return {"student_id": response["student_id"], "pending_homework": pending, "pending_count": len(pending)}
+
+    return response

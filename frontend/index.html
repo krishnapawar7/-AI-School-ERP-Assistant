@@ -7,42 +7,132 @@
   <link rel="stylesheet" href="/static/styles.css" />
 </head>
 <body>
-  <div class="app-shell">
-    <header class="app-header">
-      <div>
-        <h1>AI School ERP Assistant</h1>
-        <p>Ask about attendance, marks, fees, homework, or timetable.</p>
+  <div class="dashboard-shell">
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-icon">ERP</div>
+        <div>
+          <h2>School ERP</h2>
+          <span>Assistant</span>
+        </div>
       </div>
-      <div class="status-bar">
-        <span id="health-status" class="badge">Loading...</span>
+      <nav class="sidebar-nav">
+        <a class="nav-link active">Dashboard</a>
+        <a class="nav-link">Students</a>
+        <a class="nav-link">Teacher</a>
+        <a class="nav-link">Staffs</a>
+        <a class="nav-link">Finance</a>
+        <a class="nav-link">Activities</a>
+      </nav>
+      <div class="sidebar-footer">
+        <button class="sidebar-btn">Settings</button>
+        <button class="sidebar-btn">Log out</button>
       </div>
-    </header>
+    </aside>
 
-    <section class="panel">
-      <label for="session-id">Session ID</label>
-      <input id="session-id" type="text" value="default" placeholder="session id" />
+    <main class="dashboard-main">
+      <header class="dashboard-header">
+        <div>
+          <p class="sm-text">Welcome Back, Sir</p>
+          <h1>School ERP Dashboard</h1>
+        </div>
+        <div class="header-actions">
+          <span class="date-chip">05 November 2025</span>
+          <span id="health-status" class="date-chip" style="font-size:0.9rem;">Loading...</span>
+          <button class="notification-btn">🔔</button>
+          <button class="profile-btn">AP</button>
+        </div>
+      </header>
 
-      <label for="student-id">Student ID</label>
-      <input id="student-id" type="text" placeholder="e.g. STU001" />
+      <section class="top-cards">
+        <article class="stat-card">
+          <span>Students</span>
+          <h2 id="students-count">770</h2>
+        </article>
+        <article class="stat-card">
+          <span>Teachers</span>
+          <h2 id="teachers-count">20</h2>
+        </article>
+        <article class="stat-card">
+          <span>Staffs</span>
+          <h2 id="staff-count">5</h2>
+        </article>
+        <article class="stat-card">
+          <span>Events</span>
+          <h2 id="events-count">17</h2>
+        </article>
+        <article class="stat-card">
+          <span>Earnings</span>
+          <h2 id="earnings-count">$3,589</h2>
+        </article>
+      </section>
 
-      <label for="query">Question</label>
-      <textarea id="query" rows="4" placeholder="Ask about attendance, marks, fees, homework, or timetable..."></textarea>
+      <section class="dashboard-grid">
+        <section class="panel card-wide">
+          <div class="panel-title">
+            <h2>Finance</h2>
+            <span>November 2025</span>
+          </div>
+          <div class="chart-placeholder">
+            <div class="chart-bar large"></div>
+            <div class="chart-bar medium"></div>
+            <div class="chart-bar small"></div>
+          </div>
+        </section>
 
-      <div class="inline-controls">
-        <label><input id="use-gemini" type="checkbox" /> Enrich with Gemini</label>
-        <button id="send-btn">Send</button>
-      </div>
-    </section>
+        <section class="panel card-medium">
+          <div class="panel-title">
+            <h2>Attendance</h2>
+            <span>Students</span>
+          </div>
+          <div class="attendance-circles">
+            <div class="circle-card">
+              <span>School Attendance</span>
+              <div class="circle"><span id="attendance-value">80%</span></div>
+              <p id="attendance-subtext">Boys 80%, Girls 65%</p>
+            </div>
+            <div class="circle-card">
+              <span>Girls Attendance</span>
+              <div class="circle circle-blue"><span id="girls-attendance">65%</span></div>
+              <p id="boys-attendance">Boys 80%</p>
+            </div>
+          </div>
+        </section>
 
-    <section class="output-panel">
-      <h2>Response</h2>
-      <pre id="output">Submit a query to see the ERP assistant response.</pre>
-    </section>
+        <section class="panel card-chat">
+          <div class="panel-title">
+            <h2>ERP Assistant</h2>
+            <span>Ask for attendance, marks, fees, homework and timetable</span>
+          </div>
+          <div class="chat-panel">
+            <div class="chat-fields">
+              <label for="session-id">Session ID</label>
+              <input id="session-id" type="text" value="default" placeholder="session id" />
+              <label for="student-id">Student ID</label>
+              <input id="student-id" type="text" placeholder="e.g. STU001" />
+              <label for="query">Your query</label>
+              <textarea id="query" rows="4" placeholder="Ask about attendance, marks, fees, homework, or timetable..."></textarea>
+              <div class="inline-controls">
+                <label><input id="use-gemini" type="checkbox" /> Gemini</label>
+                <button id="send-btn">Send</button>
+              </div>
+            </div>
+            <div class="chat-output">
+              <div id="response-box" class="response-box">Submit a query to see the ERP assistant response.</div>
+              <div id="error-box" class="error-box hidden"></div>
+            </div>
+          </div>
+        </section>
 
-    <section class="output-panel" id="history-panel">
-      <h2>Recent History</h2>
-      <div id="history">Loading recent history...</div>
-    </section>
+        <section class="panel card-history">
+          <div class="panel-title">
+            <h2>Recent History</h2>
+            <button id="refresh-btn" type="button">Refresh</button>
+          </div>
+          <div id="history" class="history-list">Loading recent history...</div>
+        </section>
+      </section>
+    </main>
   </div>
 
   <script src="/static/app.js"></script>

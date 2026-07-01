@@ -6,6 +6,20 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional
 
 DATA_FILE = Path(__file__).resolve().parent.parent / "data" / "attendance.json"
+MONTH_NAMES = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+]
 
 
 class AttendanceError(ValueError):
@@ -34,11 +48,17 @@ def _normalize_student_id(student_id: Optional[str]) -> str:
     return str(student_id).strip().upper()
 
 
-def _resolve_month(query: str, month: Optional[str] = None) -> str:
-    """Resolve the target month for attendance queries."""
-    if month:
-        return month
-    return datetime.utcnow().strftime("%Y-%m")
+def _resolve_month(query: str) -> Optional[str]:
+    """Resolve the target month name for attendance queries."""
+    lower_query = query.lower()
+    if "this month" in lower_query or "monthly" in lower_query:
+        return datetime.utcnow().strftime("%B")
+
+    for month in MONTH_NAMES:
+        if month.lower() in lower_query:
+            return month
+
+    return None
 
 
 def _parse_query_type(query: str) -> str:
@@ -55,12 +75,18 @@ def _parse_query_type(query: str) -> str:
 
 def _filter_records(records: List[Dict[str, Any]], student_id: str, month: Optional[str]) -> List[Dict[str, Any]]:
     """Return matching records for the student and optional month."""
-    student_records = [record for record in records if str(record.get("student_id", "")).strip().upper() == student_id]
+    student_records = [
+        record for record in records
+        if str(record.get("student_id", "")).strip().upper() == student_id
+    ]
     if not student_records:
         raise AttendanceError("Missing attendance data")
 
     if month:
-        month_records = [record for record in student_records if str(record.get("month", "")).strip() == month]
+        month_records = [
+            record for record in student_records
+            if str(record.get("month", "")).strip().lower() == month.lower()
+        ]
         if not month_records:
             raise AttendanceError("Missing attendance data")
         return month_records
@@ -84,29 +110,34 @@ def get_attendance_response(student_id: Optional[str], query: str) -> Dict[str, 
     if not record:
         raise AttendanceError("Missing attendance data")
 
+    present = int(record.get("present", record.get("attended", 0)))
+    absent = int(record.get("absent", record.get("missed", 0)))
+    total = present + absent
+    percentage = round(float(record.get("attendance_percentage", record.get("percentage", 0.0))), 2)
+
     payload = {
         "student_id": normalized_student_id,
         "month": record.get("month", month),
         "query_type": query_type,
-        "attended": int(record.get("attended", 0)),
-        "total": int(record.get("total", 0)),
-        "missed": int(record.get("missed", 0)),
-        "attendance_percentage": round(float(record.get("percentage", 0.0)), 2),
+        "present": present,
+        "absent": absent,
+        "total": total,
+        "attendance_percentage": percentage,
         "status": record.get("status", "regular"),
         "history": [
             {
                 "month": item.get("month"),
-                "attendance_percentage": round(float(item.get("percentage", 0.0)), 2),
-                "attended": int(item.get("attended", 0)),
-                "total": int(item.get("total", 0)),
-                "missed": int(item.get("missed", 0)),
+                "attendance_percentage": round(float(item.get("attendance_percentage", item.get("percentage", 0.0))), 2),
+                "present": int(item.get("present", item.get("attended", 0))),
+                "total": int(item.get("total", item.get("present", 0) + item.get("absent", 0))),
+                "absent": int(item.get("absent", item.get("missed", 0))),
             }
             for item in _filter_records(records, normalized_student_id, None)[-4:]
         ],
     }
 
     if query_type == "missed":
-        payload["response_hint"] = f"You missed {payload['missed']} classes in {payload['month']}."
+        payload["response_hint"] = f"You missed {payload['absent']} classes in {payload['month']}."
     elif query_type == "percentage":
         payload["response_hint"] = f"Your attendance percentage for {payload['month']} is {payload['attendance_percentage']}%."
     else:

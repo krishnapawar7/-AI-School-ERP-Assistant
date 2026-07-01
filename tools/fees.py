@@ -37,21 +37,37 @@ def get_fees_response(student_id: Optional[str], query: str) -> Dict[str, Any]:
     if not student_id:
         raise FeesError("Invalid student ID")
 
-    records = _student(_load_data(), student_id)
-    q = query.lower()
-    total = sum(float(record["amount"]) for record in records)
-    paid = sum(float(record["amount"]) for record in records if record["status"] == "Paid")
-    pending = total - paid
+    cumulative = [record for record in _load_data() if str(record.get("student_id", "")).strip().upper() == str(student_id).strip().upper()]
+    if not cumulative:
+        raise FeesError("Missing fee records")
 
-    if "pending" in q:
-        return {
+    if len(cumulative) == 1 and {"total_fee", "paid", "pending", "status"}.issubset(cumulative[0].keys()):
+        record = cumulative[0]
+        total = float(record.get("total_fee", 0))
+        paid = float(record.get("paid", 0))
+        pending = float(record.get("pending", 0))
+        response = {
             "student_id": student_id.upper(),
+            "total_fee": total,
+            "paid": paid,
             "pending": pending,
-            "currency": "INR",
-            "records": records,
+            "status": record.get("status", "Pending"),
+        }
+    else:
+        total = sum(float(record.get("amount", 0)) for record in cumulative)
+        paid = sum(float(record.get("amount", 0)) for record in cumulative if record.get("status") == "Paid")
+        pending = total - paid
+        response = {
+            "student_id": student_id.upper(),
+            "total_fee": total,
+            "paid": paid,
+            "pending": pending,
+            "records": cumulative,
         }
 
-    if "history" in q or "paid" in q:
-        return {"student_id": student_id.upper(), "paid_records": [record for record in records if record["status"] == "Paid"], "records": records}
-
-    return {"student_id": student_id.upper(), "total_fee": total, "paid": paid, "pending": pending, "records": records}
+    if "pending" in query.lower():
+        return response
+    if "history" in query.lower() or "paid" in query.lower():
+        response["paid_records"] = [record for record in cumulative if record.get("status") == "Paid"]
+        return response
+    return response

@@ -1,7 +1,9 @@
 [
-  {"student_id": "STU001", "term": "Semester 1", "amount": 25000, "status": "Paid", "payment_date": "2026-01-12"},
-  {"student_id": "STU001", "term": "Semester 2", "amount": 25000, "status": "Pending", "payment_date": null},
-  {"student_id": "STU002", "term": "Semester 1", "amount": 25000, "status": "Paid", "payment_date": "2026-01-10"},
-  {"student_id": "STU002", "term": "Semester 2", "amount": 25000, "status": "Paid", "payment_date": "2026-05-15"},
-  {"student_id": "STU003", "term": "Semester 1", "amount": 28000, "status": "Pending", "payment_date": null}
+  {
+    "student_id": "STU001",
+    "total_fee": 60000,
+    "paid": 45000,
+    "pending": 15000,
+    "status": "Pending"
+  }
 ]

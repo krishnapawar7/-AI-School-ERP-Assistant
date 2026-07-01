@@ -7,8 +7,20 @@ const studentIdInput = document.getElementById("student-id");
 const queryInput = document.getElementById("query");
 const geminiCheckbox = document.getElementById("use-gemini");
 const sendBtn = document.getElementById("send-btn");
-const output = document.getElementById("output");
+const clearBtn = document.getElementById("clear-btn");
+const refreshBtn = document.getElementById("refresh-btn");
+const exampleButtons = document.querySelectorAll(".example-btn");
+const responseBox = document.getElementById("response-box");
+const errorBox = document.getElementById("error-box");
 const historyContainer = document.getElementById("history");
+const studentsCount = document.getElementById("students-count");
+const teachersCount = document.getElementById("teachers-count");
+const staffCount = document.getElementById("staff-count");
+const eventsCount = document.getElementById("events-count");
+const earningsCount = document.getElementById("earnings-count");
+const attendanceValue = document.getElementById("attendance-value");
+const boysAttendance = document.getElementById("boys-attendance");
+const girlsAttendance = document.getElementById("girls-attendance");
 
 async function checkHealth() {
   try {
@@ -81,11 +93,11 @@ async function onSend() {
   const useGemini = geminiCheckbox.checked;
 
   if (!query) {
-    output.textContent = "Please enter a query first.";
+    responseBox.textContent = "Please enter a query first.";
     return;
   }
 
-  output.textContent = "Sending request...";
+  responseBox.textContent = "Sending request...";
 
   try {
     const response = await fetch(endpoint, {
@@ -102,15 +114,92 @@ async function onSend() {
     });
 
     const payload = await response.json();
-    output.textContent = formatJson(payload);
+    if (!response.ok) {
+      showError(payload.detail || "An error occurred while calling the API.");
+      responseBox.textContent = formatJson(payload);
+      return;
+    }
+
+    responseBox.textContent = formatJson(payload);
+    showError("");
     await fetchHistory();
   } catch (error) {
-    output.textContent = `Request failed:\n${error}`;
+    showError(`Request failed: ${error}`);
+    responseBox.textContent = "";
   }
 }
+
+async function fetchDashboard() {
+  try {
+    const response = await fetch("/dashboard");
+    if (!response.ok) {
+      return;
+    }
+    const payload = await response.json();
+    const totals = payload.totals || {};
+    const dashboard = payload.dashboard || {};
+
+    if (studentsCount) {
+      studentsCount.textContent = totals.students ?? dashboard.students ?? studentsCount.textContent;
+    }
+    if (teachersCount) {
+      teachersCount.textContent = totals.teachers ?? dashboard.teachers ?? teachersCount.textContent;
+    }
+    if (staffCount) {
+      staffCount.textContent = totals.staffs ?? dashboard.staffs ?? staffCount.textContent;
+    }
+    if (eventsCount) {
+      eventsCount.textContent = totals.events ?? dashboard.events ?? eventsCount.textContent;
+    }
+    if (earningsCount) {
+      earningsCount.textContent = dashboard.earnings ? `$${dashboard.earnings}` : earningsCount.textContent;
+    }
+    if (attendanceValue) {
+      attendanceValue.textContent = dashboard.attendance ? `${dashboard.attendance}%` : attendanceValue.textContent;
+    }
+    if (boysAttendance) {
+      boysAttendance.textContent = `Boys ${dashboard.boys_attendance ?? dashboard.attendance ?? 0}%`;
+    }
+    if (girlsAttendance) {
+      girlsAttendance.textContent = `${dashboard.girls_attendance ?? 0}%`;
+    }
+  } catch {
+    // Ignore dashboard load errors, keep fallback values.
+  }
+}
+
+function showError(message) {
+  if (!message) {
+    errorBox.classList.add("hidden");
+    errorBox.textContent = "";
+    return;
+  }
+
+  errorBox.textContent = message;
+  errorBox.classList.remove("hidden");
+}
+
+clearBtn.addEventListener("click", () => {
+  studentIdInput.value = "";
+  queryInput.value = "";
+  geminiCheckbox.checked = false;
+  responseBox.textContent = "Submit a query to see the ERP assistant response.";
+  showError("");
+});
+
+refreshBtn.addEventListener("click", fetchHistory);
+exampleButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    queryInput.value = button.textContent;
+    geminiCheckbox.checked = false;
+    responseBox.textContent = "Ready to send";
+    showError("");
+  });
+});
 
 sendBtn.addEventListener("click", onSend);
 window.addEventListener("load", () => {
   checkHealth();
+  fetchDashboard();
   fetchHistory();
 });

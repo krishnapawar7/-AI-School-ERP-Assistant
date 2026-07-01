@@ -1,0 +1,12 @@
+[
+  {
+    "month": "November",
+    "income": 350000,
+    "expense": 180000
+  },
+  {
+    "month": "December",
+    "income": 410000,
+    "expense": 250000
+  }
+]

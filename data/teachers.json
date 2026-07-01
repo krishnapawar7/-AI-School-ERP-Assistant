@@ -1,0 +1,16 @@
+[
+  {
+    "teacher_id": "T001",
+    "name": "Ankit Sharma",
+    "department": "Mathematics",
+    "experience": 8,
+    "salary": 60000
+  },
+  {
+    "teacher_id": "T002",
+    "name": "Pooja Gupta",
+    "department": "Physics",
+    "experience": 5,
+    "salary": 52000
+  }
+]

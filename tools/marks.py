@@ -75,62 +75,57 @@ def get_marks_response(student_id: Optional[str], query: str) -> Dict[str, Any]:
     normalized_student_id = _normalize_student_id(student_id)
     records = _load_marks_data()
     query_type = _detect_query_type(query)
-    subject = _detect_subject(query, records) if query_type in {"subject", "summary"} else None
-    filtered_records = _filter_records(records, normalized_student_id, subject)
+
+    matching = [item for item in records if str(item.get("student_id", "")).strip().upper() == normalized_student_id]
+    if not matching:
+        raise MarksError("Missing marks data")
+
+    subjects = matching[0].get("subjects") if matching else None
+    if not isinstance(subjects, list):
+        raise MarksError("Missing marks data")
 
     if query_type == "highest":
-        best_record = max(filtered_records, key=lambda item: float(item.get("marks", 0)))
+        best_record = max(subjects, key=lambda item: float(item.get("marks", 0)))
         return {
             "student_id": normalized_student_id,
             "query_type": query_type,
             "subject": best_record.get("subject"),
             "marks": int(best_record.get("marks", 0)),
-            "max_marks": int(best_record.get("max_marks", 0)),
-            "percentage": round((float(best_record.get("marks", 0)) / float(best_record.get("max_marks", 1))) * 100, 2),
-            "exam": best_record.get("exam"),
         }
 
     if query_type == "average":
-        average_marks = round(sum(float(item.get("marks", 0)) for item in filtered_records) / len(filtered_records), 2) if filtered_records else 0.0
+        average_marks = round(sum(float(item.get("marks", 0)) for item in subjects) / len(subjects), 2) if subjects else 0.0
         return {
             "student_id": normalized_student_id,
             "query_type": query_type,
             "average_marks": average_marks,
-            "subject_count": len(filtered_records),
-            "records": [
-                {"subject": item.get("subject"), "marks": int(item.get("marks", 0)), "max_marks": int(item.get("max_marks", 0))}
-                for item in filtered_records
+            "subject_count": len(subjects),
+            "subjects": [
+                {"subject": item.get("subject"), "marks": int(item.get("marks", 0))}
+                for item in subjects
             ],
         }
 
     if query_type == "percentage":
-        total_marks = sum(float(item.get("marks", 0)) for item in filtered_records)
-        total_max = sum(float(item.get("max_marks", 0)) for item in filtered_records)
-        percentage = round((total_marks / total_max) * 100, 2) if total_max else 0.0
+        total_marks = sum(float(item.get("marks", 0)) for item in subjects)
+        percentage = round((total_marks / (len(subjects) * 100)) * 100, 2) if subjects else 0.0
         return {
             "student_id": normalized_student_id,
             "query_type": query_type,
             "percentage": percentage,
             "obtained_marks": round(total_marks, 2),
-            "total_marks": round(total_max, 2),
+            "total_marks": len(subjects) * 100,
         }
 
-    subject_marks = [
-        {
-            "subject": item.get("subject"),
-            "exam": item.get("exam"),
-            "marks": int(item.get("marks", 0)),
-            "max_marks": int(item.get("max_marks", 0)),
-            "percentage": round((float(item.get("marks", 0)) / float(item.get("max_marks", 1))) * 100, 2),
-        }
-        for item in filtered_records
-    ]
     return {
         "student_id": normalized_student_id,
         "query_type": query_type,
-        "subject_marks": subject_marks,
+        "subjects": [
+            {"subject": item.get("subject"), "marks": int(item.get("marks", 0))}
+            for item in subjects
+        ],
         "summary": {
-            "total_subjects": len(subject_marks),
-            "average_marks": round(sum(item["marks"] for item in subject_marks) / len(subject_marks), 2) if subject_marks else 0.0,
+            "total_subjects": len(subjects),
+            "average_marks": round(sum(float(item.get("marks", 0)) for item in subjects) / len(subjects), 2) if subjects else 0.0,
         },
     }
