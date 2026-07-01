@@ -1,0 +1,10 @@
+[
+  {"student_id": "STU001", "subject": "Mathematics", "exam": "Midterm", "marks": 88, "max_marks": 100},
+  {"student_id": "STU001", "subject": "Science", "exam": "Midterm", "marks": 91, "max_marks": 100},
+  {"student_id": "STU001", "subject": "English", "exam": "Midterm", "marks": 84, "max_marks": 100},
+  {"student_id": "STU001", "subject": "History", "exam": "Midterm", "marks": 78, "max_marks": 100},
+  {"student_id": "STU001", "subject": "Computer Science", "exam": "Final", "marks": 95, "max_marks": 100},
+  {"student_id": "STU002", "subject": "Mathematics", "exam": "Midterm", "marks": 72, "max_marks": 100},
+  {"student_id": "STU002", "subject": "Science", "exam": "Midterm", "marks": 69, "max_marks": 100},
+  {"student_id": "STU002", "subject": "English", "exam": "Midterm", "marks": 74, "max_marks": 100}
+]

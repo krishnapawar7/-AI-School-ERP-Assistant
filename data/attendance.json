@@ -1,0 +1,14 @@
+[
+  {"student_id": "STU001", "month": "2025-10", "attended": 18, "total": 20, "missed": 2, "percentage": 90.0, "status": "Regular"},
+  {"student_id": "STU001", "month": "2025-11", "attended": 19, "total": 20, "missed": 1, "percentage": 95.0, "status": "Regular"},
+  {"student_id": "STU001", "month": "2025-12", "attended": 17, "total": 20, "missed": 3, "percentage": 85.0, "status": "Needs attention"},
+  {"student_id": "STU001", "month": "2026-01", "attended": 18, "total": 20, "missed": 2, "percentage": 90.0, "status": "Regular"},
+  {"student_id": "STU001", "month": "2026-02", "attended": 20, "total": 20, "missed": 0, "percentage": 100.0, "status": "Excellent"},
+  {"student_id": "STU001", "month": "2026-03", "attended": 16, "total": 20, "missed": 4, "percentage": 80.0, "status": "Needs attention"},
+  {"student_id": "STU001", "month": "2026-04", "attended": 19, "total": 20, "missed": 1, "percentage": 95.0, "status": "Regular"},
+  {"student_id": "STU001", "month": "2026-05", "attended": 18, "total": 20, "missed": 2, "percentage": 90.0, "status": "Regular"},
+  {"student_id": "STU001", "month": "2026-06", "attended": 17, "total": 20, "missed": 3, "percentage": 85.0, "status": "Needs attention"},
+  {"student_id": "STU001", "month": "2026-07", "attended": 19, "total": 20, "missed": 1, "percentage": 95.0, "status": "Excellent"},
+  {"student_id": "STU002", "month": "2026-07", "attended": 15, "total": 20, "missed": 5, "percentage": 75.0, "status": "Needs attention"},
+  {"student_id": "STU002", "month": "2026-06", "attended": 16, "total": 20, "missed": 4, "percentage": 80.0, "status": "Needs attention"}
+]

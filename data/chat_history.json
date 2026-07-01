@@ -1,0 +1,172 @@
+[
+  {
+    "id": "51c6fe74-2ee1-490e-ae52-c5619c449f4c",
+    "timestamp": "2026-07-01T06:00:34.448730",
+    "query": "Show my attendance",
+    "student_id": "   ",
+    "intent": "Attendance",
+    "tools": [
+      "attendance"
+    ],
+    "response": {
+      "error": "Invalid student ID"
+    }
+  },
+  {
+    "id": "9225524a-73eb-49b3-a49b-681cf3ad4de0",
+    "timestamp": "2026-07-01T06:00:34.467126",
+    "query": "What is my attendance percentage?",
+    "student_id": "stu001",
+    "intent": "Attendance",
+    "tools": [
+      "attendance"
+    ],
+    "response": {
+      "student_id": "STU001",
+      "month": "2026-07",
+      "query_type": "percentage",
+      "attended": 19,
+      "total": 20,
+      "missed": 1,
+      "attendance_percentage": 95.0,
+      "status": "Excellent",
+      "history": [
+        {
+          "month": "2026-04",
+          "attendance_percentage": 95.0,
+          "attended": 19,
+          "total": 20,
+          "missed": 1
+        },
+        {
+          "month": "2026-05",
+          "attendance_percentage": 90.0,
+          "attended": 18,
+          "total": 20,
+          "missed": 2
+        },
+        {
+          "month": "2026-06",
+          "attendance_percentage": 85.0,
+          "attended": 17,
+          "total": 20,
+          "missed": 3
+        },
+        {
+          "month": "2026-07",
+          "attendance_percentage": 95.0,
+          "attended": 19,
+          "total": 20,
+          "missed": 1
+        }
+      ],
+      "response_hint": "Your attendance percentage for 2026-07 is 95.0%."
+    }
+  },
+  {
+    "id": "b20458fe-7f66-49e3-9fe3-decf57cb6edf",
+    "timestamp": "2026-07-01T06:00:34.488819",
+    "query": "Show my attendance",
+    "student_id": "stu001",
+    "intent": "Attendance",
+    "tools": [
+      "attendance"
+    ],
+    "response": {
+      "student_id": "STU001",
+      "month": "2026-07",
+      "query_type": "summary",
+      "attended": 19,
+      "total": 20,
+      "missed": 1,
+      "attendance_percentage": 95.0,
+      "status": "Excellent",
+      "history": [
+        {
+          "month": "2026-04",
+          "attendance_percentage": 95.0,
+          "attended": 19,
+          "total": 20,
+          "missed": 1
+        },
+        {
+          "month": "2026-05",
+          "attendance_percentage": 90.0,
+          "attended": 18,
+          "total": 20,
+          "missed": 2
+        },
+        {
+          "month": "2026-06",
+          "attendance_percentage": 85.0,
+          "attended": 17,
+          "total": 20,
+          "missed": 3
+        },
+        {
+          "month": "2026-07",
+          "attendance_percentage": 95.0,
+          "attended": 19,
+          "total": 20,
+          "missed": 1
+        }
+      ],
+      "response_hint": "Attendance summary for 2026-07 is ready."
+    }
+  },
+  {
+    "id": "44d9f095-45b1-4e11-a531-6a6c1e9f3e83",
+    "timestamp": "2026-07-01T06:17:06.680457",
+    "query": "Show my marks",
+    "student_id": "stu001",
+    "intent": "marks",
+    "tools": [
+      "marks"
+    ],
+    "response": {
+      "student_id": "STU001",
+      "query_type": "summary",
+      "subject_marks": [
+        {
+          "subject": "Mathematics",
+          "exam": "Midterm",
+          "marks": 88,
+          "max_marks": 100,
+          "percentage": 88.0
+        },
+        {
+          "subject": "Science",
+          "exam": "Midterm",
+          "marks": 91,
+          "max_marks": 100,
+          "percentage": 91.0
+        },
+        {
+          "subject": "English",
+          "exam": "Midterm",
+          "marks": 84,
+          "max_marks": 100,
+          "percentage": 84.0
+        },
+        {
+          "subject": "History",
+          "exam": "Midterm",
+          "marks": 78,
+          "max_marks": 100,
+          "percentage": 78.0
+        },
+        {
+          "subject": "Computer Science",
+          "exam": "Final",
+          "marks": 95,
+          "max_marks": 100,
+          "percentage": 95.0
+        }
+      ],
+      "summary": {
+        "total_subjects": 5,
+        "average_marks": 87.2
+      }
+    }
+  }
+]
