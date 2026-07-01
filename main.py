@@ -27,7 +27,7 @@ app.include_router(api_router)
 app.mount("/static", StaticFiles(directory=Path(__file__).resolve().parent / "frontend"), name="static")
 
 
-@app.get("/", response_class=HTMLResponse)
+@app.api_route("/", methods=["GET", "HEAD"], response_class=HTMLResponse)
 async def root() -> str:
     return (Path(__file__).resolve().parent / "frontend" / "index.html").read_text(encoding="utf-8")
 
